@@ -1,0 +1,31 @@
+from math import ceil
+# вариант 9
+class Hero:
+    def __init__(self, hlth, stmna, dmg, stperhit, enhlth):
+        self._hlth = hlth
+        self._stmna = stmna
+        self._dmg = dmg
+        self._stperhit = stperhit
+        self._enhlth = enhlth
+    def get_hits(self):
+        print(f'Можно нанести {int(ceil(self._stmna / self._stperhit))} ударов до изнеможения')
+
+class Mob(Hero):
+    def __init__(self, hlth, stmna, dmg, stperhit, enhlth, spwnrate):
+        super().__init__(hlth, stmna, dmg, stperhit, enhlth)
+        self._spwnrate = spwnrate
+
+    def get_slghtr(self, dmg, enhlth):
+        self._dmg = dmg
+        self._enhlth = enhlth
+        print(f'До смерти врага {int(ceil(self._enhlth / self._dmg))} ударов')
+
+class Boss(Hero):
+    def __init__(self, hlth, stmna, dmg, stperhit, enhlth, exp):
+        super().__init__(hlth, stmna, dmg, stperhit, enhlth)
+        self._exp = exp
+
+    def get_slghtr(self, dmg, enhlth):
+        self._dmg = dmg
+        self._enhlth = enhlth
+        print(f'До смерти врага {int(ceil(self._enhlth / self._dmg))} ударов')
